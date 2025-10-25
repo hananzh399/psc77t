@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <!-- Firebase SDK Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="CSS/school-registration.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="welcome-banner" style="display: none;">
+            <p id="welcomeUserMessage"></p>
+        </div>
+
+        <div class="blocked-banner" id="blocked-banner">
+            <p><strong>Registration Closed:</strong> New student registrations are temporarily disabled by the administration. Please check back later.</p>
+        </div>
+        
+        <form id="schoolForm" novalidate>
+            <div class="form-header">
+                <img src="st-rg-lg2.png" alt="New Student Registration" class="header-logo">
+                <h2>Student Registration</h2>
+                <p class="subtitle">Please complete your registration details below.</p>
+            </div>
+            
+            <img id="imagePreview" src="#" alt="Image Preview">
+
+            <div class="input-group">
+                <i class="fas fa-file-alt"></i>
+                <input type="text" id="formNumber" placeholder="Generating form number..." disabled>
+                <div class="error-text"></div>
+            </div>
+
+            <div class="input-group first-field">
+                <i class="fas fa-child"></i>
+                <input type="text" id="studentName" placeholder="Student's Full Name" required>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="studentCnic" placeholder="Student CNIC (e.g., 12345-1234567-1)">
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-user-friends"></i>
+                <input type="text" id="fatherName" placeholder="Father's Name" required>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="fatherCnic" placeholder="Father CNIC (e.g., 12345-1234567-1)" required>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="date" id="dob" required>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-venus-mars"></i>
+                <select id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                 <i class="fas fa-graduation-cap"></i>
+                <select id="admissionClass" required>
+                    <option value="" disabled selected>Class For Which Admission Required</option>
+                    <option value="Montessori">Montessori</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="Prep">Prep</option>
+                    <option value="One (1)">One (1)</option>
+                    <option value="Two (2)">Two (2)</option>
+                    <option value="Three (3)">Three (3)</option>
+                    <option value="Four (4)">Four (4)</option>
+                    <option value="Five (5)">Five (5)</option>
+                    <option value="Six (6)">Six (6)</option>
+                    <option value="Seven (7)">Seven (7)</option>
+                    <option value="Eight (8)">Eight (8)</option>
+                    <option value="Nine (9)">Nine (9)</option>
+                    <option value="Ten (10)">Ten (10)</option>
+                    <option value="First Year (11)">First Year (11)</option>
+                    <option value="2nd Year (12)">2nd Year (12)</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+            
+            <div class="input-group" id="subject-group" style="display: none;">
+                <i class="fas fa-atom"></i>
+                <select id="subjectSelection">
+                    <option value="" disabled selected>Select Subject</option>
+                    <option value="Bio">Bio</option>
+                    <option value="Computer">Computer</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+
+            <div class="input-group" id="field-group" style="display: none;">
+                <i class="fas fa-drafting-compass"></i>
+                <select id="fieldSelection">
+                    <option value="" disabled selected>Select Field</option>
+                    <option value="Pre Medical">Pre Medical</option>
+                    <option value="Pre Engineering">Pre Engineering</option>
+                    <option value="ICS">ICS</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-school"></i>
+                <input type="text" id="previousSchool" placeholder="Previous School Name">
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <select id="previousClass">
+                    <option value="" disabled selected>Previous Class (If any)</option>
+                    <option value="None">None</option>
+                    <option value="Montessori">Montessori</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="Prep">Prep</option>
+                    <option value="One (1)">One (1)</option>
+                    <option value="Two (2)">Two (2)</option>
+                    <option value="Three (3)">Three (3)</option>
+                    <option value="Four (4)">Four (4)</option>
+                    <option value="Five (5)">Five (5)</option>
+                    <option value="Six (6)">Six (6)</option>
+                    <option value="Seven (7)">Seven (7)</option>
+                    <option value="Eight (8)">Eight (8)</option>
+                    <option value="Nine (9)">Nine (9)</option>
+                    <option value="Ten (10)">Ten (10)</option>
+                    <option value="First Year (11)">First Year (11)</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-mobile-alt"></i>
+                <input type="text" id="mobileNumber" placeholder="Mobile Number" required inputmode="numeric" maxlength="11">
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fab fa-whatsapp"></i>
+                <input type="text" id="whatsappNumber" placeholder="WhatsApp Number" required inputmode="numeric" maxlength="11">
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <textarea id="mailingAddress" placeholder="Mailing Address" rows="3" required></textarea>
+                <div class="error-text"></div>
+            </div>
+            <div class="address-checkbox">
+                <input type="checkbox" id="sameAddressCheckbox">
+                <label for="sameAddressCheckbox">Permanent address is the same as mailing address</label>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-map-marked-alt"></i>
+                <textarea id="permanentAddress" placeholder="Permanent Address" rows="3" required></textarea>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-flag"></i>
+                <select id="nationality" required>
+                    <option value="" disabled selected>Select Nationality</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Others">Others</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-place-of-worship"></i>
+                <select id="religion" required>
+                    <option value="" disabled selected>Select Religion</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Others">Others</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+             <div class="input-group">
+                <i class="fas fa-info-circle"></i>
+                <select id="howYouKnow" required>
+                    <option value="" disabled selected>How You Know About Us</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Friend or Family">Friend or Family</option>
+                    <option value="Advertisement">Advertisement</option>
+                    <option value="School Visit">School Visit</option>
+                    <option value="Other">Other</option>
+                </select>
+                <div class="error-text"></div>
+            </div>
+            
+            <label class="file-upload-zone" for="studentPicture">
+                <input type="file" id="studentPicture" accept="image/*" required>
+                <div class="file-upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop photo here</p>
+                    <span>or <strong>click to browse</strong></span>
+                    <span id="file-name"></span>
+                </div>
+            </label>
+            <div class="error-text" id="file-error-text"></div>
+            
+            <button type="submit" id="submitBtn">Submit Registration</button>
+            <div id="form-error" class="error-message"></div>
+        </form>
+    </div>
+    <script type="module" src="java Script/school-registration.js"></script>
+</body>
+</html>

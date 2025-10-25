@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Styles from admin.css are used for a consistent look -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="CSS/admin.css">
+    <style>
+        body { background-color: #f4f7f6; }
+        .details-card { 
+            background: #fff; 
+            border-radius: 10px; 
+            padding: 30px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+            margin-top: 20px;
+        }
+        #test-date-banner {
+            display: none; /* Hidden by default */
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #e8f7fa;
+            color: #0c5460;
+            border: 1px solid #bde6f1;
+            border-left: 5px solid #2a9d8f;
+            text-align: center;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader"><h2>Loading Your Details...</h2></div>
+
+    <div class="admin-container" id="content" style="display: none;">
+        <header>
+            <h1>Your Submitted Application</h1>
+            <div class="header-buttons">
+                <button id="signOutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+            </div>
+        </header>
+
+        <!-- Test Date Banner -->
+        <div id="test-date-banner">
+            <p><i class="fas fa-info-circle"></i> <span id="test-date-message"></span></p>
+        </div>
+
+        <!-- This card will be populated with the student's details -->
+        <div id="school-details" class="details-card" style="display: none;">
+            <div class="modal-header">
+                <img id="details-student-picture" src="placeholder.png" alt="Student Picture">
+                <div class="modal-header-info">
+                    <h2 id="details-student-name"></h2>
+                    <p id="details-form-number"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h3>Personal Information</h3>
+                <div class="details-grid">
+                    <p><strong>Father's Name:</strong> <span id="details-father-name"></span></p>
+                    <p><strong>Date of Birth:</strong> <span id="details-dob"></span></p>
+                    <p><strong>Gender:</strong> <span id="details-gender"></span></p>
+                    <p><strong>Student CNIC:</strong> <span id="details-student-cnic"></span></p>
+                    <p><strong>Father's CNIC:</strong> <span id="details-father-cnic"></span></p>
+                    <p><strong>Nationality:</strong> <span id="details-nationality"></span></p>
+                    <p><strong>Religion:</strong> <span id="details-religion"></span></p>
+                </div>
+                <h3>Academic Information</h3>
+                <div class="details-grid">
+                    <p><strong>Admission For:</strong> <span id="details-admission-class"></span></p>
+                    <p><strong>Subject/Field:</strong> <span id="details-subject-field"></span></p>
+                    <p><strong>Previous School:</strong> <span id="details-previous-school"></span></p>
+                    <p><strong>Previous Class:</strong> <span id="details-previous-class"></span></p>
+                </div>
+                <h3>Contact Information</h3>
+                <div class="details-grid">
+                    <p><strong>Email:</strong> <span id="details-email"></span></p>
+                    <p><strong>Mobile:</strong> <span id="details-mobile"></span></p>
+                    <p><strong>WhatsApp:</strong> <span id="details-whatsapp"></span></p>
+                </div>
+                 <h3>Address Information</h3>
+                <div class="details-grid full-width">
+                     <p><strong>Mailing Address:</strong> <span id="details-mailing-address"></span></p>
+                    <p><strong>Permanent Address:</strong> <span id="details-permanent-address"></span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- This card is shown if the user hasn't completed their form yet -->
+        <div id="no-details-message" class="details-card" style="display: none; text-align: center;">
+            <h3>Welcome!</h3>
+            <p>You have not completed your registration form yet.</p>
+            <a href="school-registration.html" class="home-button-link">
+                <button class="home-button">Complete Registration</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs are required for the script to work -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script type="module" src="java Script/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registrations List</title>
+    <!-- Firebase SDK Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+    <div id="loader"><h2>Loading Student Data...</h2></div>
+
+    <div class="admin-container" id="admin-content" style="display: none;">
+        <header>
+            <h1>Student Registrations</h1>
+            <div class="header-buttons">
+                <a href="admin.html" class="back-button"><i class="fas fa-tachometer-alt"></i> Back to Dashboard</a>
+                <button id="deleteAllBtn"><i class="fas fa-trash-alt"></i> Delete All Records</button>
+                <button id="signOutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+            </div>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Show All</button>
+            <button class="filter-btn" data-filter="today">Today</button>
+            <button class="filter-btn" data-filter="week">This Week</button>
+            <button class="filter-btn" data-filter="month">This Month</button>
+            <button class="filter-btn" data-filter="year">This Year</button>
+        </div>
+
+        <div class="search-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search by name, form number, or class...">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Form #</th>
+                        <th>Student Name</th>
+                        <th>Father Name</th>
+                        <th>Admission Class</th>
+                        <th>Submitted At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsTableBody">
+                    <!-- Student data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <img id="modalStudentPicture" src="" alt="Student Picture">
+                <div class="modal-header-info">
+                    <h2 id="modalStudentName"></h2>
+                    <p id="modalFormNumber"></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h3>Personal Information</h3>
+                <div class="details-grid">
+                    <p><strong>Father's Name:</strong> <span id="modalFatherName"></span></p>
+                    <p><strong>Date of Birth:</strong> <span id="modalDob"></span></p>
+                    <p><strong>Gender:</strong> <span id="modalGender"></span></p>
+                    <p><strong>Student CNIC:</strong> <span id="modalStudentCnic"></span></p>
+                    <p><strong>Father's CNIC:</strong> <span id="modalFatherCnic"></span></p>
+                    <p><strong>Nationality:</strong> <span id="modalNationality"></span></p>
+                    <p><strong>Religion:</strong> <span id="modalReligion"></span></p>
+                </div>
+                <h3>Academic Information</h3>
+                <div class="details-grid">
+                    <p><strong>Admission For:</strong> <span id="modalAdmissionClass"></span></p>
+                    <p><strong>Subject/Field:</strong> <span id="modalSubjectField"></span></p>
+                    <p><strong>Previous School:</strong> <span id="modalPreviousSchool"></span></p>
+                    <p><strong>Previous Class:</strong> <span id="modalPreviousClass"></span></p>
+                </div>
+                <h3>Contact Information</h3>
+                <div class="details-grid">
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                    <p><strong>Mobile:</strong> <span id="modalMobile"></span></p>
+                    <p><strong>WhatsApp:</strong> <span id="modalWhatsapp"></span></p>
+                </div>
+                 <h3>Address Information</h3>
+                <div class="details-grid full-width">
+                     <p><strong>Mailing Address:</strong> <span id="modalMailingAddress"></span></p>
+                    <p><strong>Permanent Address:</strong> <span id="modalPermanentAddress"></span></p>
+                </div>
+                <h3>Other Information</h3>
+                <div class="details-grid full-width">
+                    <p><strong>How They Know Us:</strong> <span id="modalHowYouKnow"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="java Script/student-list.js"></script>
+</body>
+</html>

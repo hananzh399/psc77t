@@ -1,0 +1,237 @@
+.second-body {
+    height: 100vh;
+    min-height: 2650px;
+    background: linear-gradient(to right, #5761B2, #1FC5A8);
+}
+
+nav{
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 100vh;
+    max-height: 50px;
+    background-color: white;
+    display: flex;
+    border-radius: 10px;
+    margin: 7px auto;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a{
+    position: relative;
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: black;
+    text-decoration: none;
+    padding: 22px;
+    z-index: 1;
+}
+nav span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95px;
+    height: 100%;
+    background: linear-gradient(to right, green, palegreen, forestgreen);
+    border-radius: 10px;
+    transition: .5s;
+}
+nav a:nth-child(1):hover~span
+{
+    left: 0;
+}
+nav a:nth-child(2):hover~span
+{
+    left: 95px;
+}
+nav a:nth-child(3):hover~span
+{
+    left: 189px;
+    width: 90px;
+}
+nav a:nth-child(4):hover~span
+{
+    left: 289px;
+    width: 50px;
+}
+nav a:nth-child(5):hover~span
+{
+    left: 340px;
+    width: 60px;
+}
+nav a:nth-child(6):hover~span
+{
+    left: 380px;
+    width: 70px;
+}
+nav a:nth-child(7):hover~span
+{
+    left: 430px;
+    width: 90px;
+}
+nav a:nth-child(8):hover~span
+{
+    left: 480px;
+    width: 100px;
+
+}
+nav a:nth-child(9):hover~span
+{
+    left: 540px;
+    width: 90px;
+}
+nav a:nth-child(10):hover~span
+{
+    left: 610px;
+    width: 80px;
+}
+nav a:nth-child(11):hover~span
+{
+    left: 670px;
+    width: 70px;
+}
+nav a:nth-child(12):hover~span
+{
+    left: 730px;
+    width: 60px;
+}
+nav a:nth-child(13):hover~span
+{
+    left: 790px;
+    width: 60px;
+}
+nav a:nth-child(14):hover~span
+{
+    left: 850px;
+    width: 60px;
+}
+nav a:nth-child(15):hover~span
+{
+    left: 920px;
+    width: 80px;
+}
+.cards-container {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0 0 0;
+    gap: 40px;
+}
+
+/* card 1 start*/
+.card1{
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    max-height: 320px;
+    background-color: whitesmoke;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card1 h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color:cadetblue;
+    margin: 10px 2px 2px 4px;
+}
+.card1,.main-p {
+    text-align: center;
+    font-size: 1.4rem;
+    color: green;
+    margin: 10px 2px 2px 4px;
+}
+
+.Grade-icon{
+    color: black;
+    margin: 0 6px 0 0;
+}
+.F-C-H-Tu-F{
+    display: flex;
+    text-align: left;
+    font-size: 1.3rem;
+    color: blue;
+    margin: 30px 4px 2px 27px;
+}
+.F-C-H-Tu-F .F-C-P-Tu-F{
+    display: flex;
+    margin: 0 0 0 90px;
+    font-size: 1.3rem;
+    color: lightseagreen;
+}
+.F-C-H-Tr-F{
+    display: flex;
+    text-align: left;
+    font-size: 1.3rem;
+    color: blue;
+    margin: 30px 4px 2px 27px;
+}
+.F-C-H-Tr-F .F-C-P-Tr-F{
+    display: flex;
+    margin: 0 0 0 60px;
+    font-size: 1.3rem;
+    color: lightseagreen;
+}
+.F-C-H-A-F {
+    display: flex;
+    text-align: left;
+    font-size: 1.3rem;
+    color: blue;
+    margin: 30px 4px 2px 27px;
+}
+.F-C-H-A-F .F-C-P-A-F{
+    display: flex;
+    margin: 0 0 0 60px;
+    font-size: 1.3rem;
+    color: lightseagreen;
+}
+.F-C-H-A-C {
+    display: flex;
+    text-align: left;
+    font-size: 1.3rem;
+    color: blue;
+    margin: 30px 4px 2px 27px;
+}
+.F-C-H-A-C .F-C-P-A-C{
+    display: flex;
+    margin: 0 0 0 60px;
+    font-size: 1.3rem;
+    color: lightseagreen;
+}
+.card1,.F-C-I-Tu-F {
+      color: maroon;
+      margin: 0 7px 0 0;
+}
+.card1,.F-C-I-Tr-F {
+      color: orange;
+      margin: 0 7px 0 0;
+}
+.card1,.F-C-I-A-F {
+      color: darkgoldenrod;
+      margin: 0 7px 0 0;
+}
+.card1,.F-C-I-A-C {
+      color: teal;
+      margin: 0 7px 0 0;
+}
+
+.card1:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+/*card 1 end*/
+
+@media (max-width: 767px) {
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        width: 500px;
+    }
+}
+
+
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Firebase SDK Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+    <div id="loader"><h2>Loading...</h2></div>
+
+    <div class="admin-container" id="admin-content" style="display: none;">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <div class="header-buttons">
+                <button id="signOutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+            </div>
+        </header>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-grid">
+            <div class="stat-card today">
+                <div class="icon"><i class="fas fa-calendar-day"></i></div>
+                <div class="info">
+                    <h3 id="totalToday">0</h3>
+                    <p>Registrations Today</p>
+                </div>
+            </div>
+            <div class="stat-card month">
+                <div class="icon"><i class="fas fa-calendar-week"></i></div>
+                <div class="info">
+                    <h3 id="totalMonth">0</h3>
+                    <p>This Month</p>
+                </div>
+            </div>
+            <div class="stat-card year">
+                <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="info">
+                    <h3 id="totalYear">0</h3>
+                    <p>This Year</p>
+                </div>
+            </div>
+            <div class="stat-card total">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <div class="info">
+                    <h3 id="totalOverall">0</h3>
+                    <p>Overall Total</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Source Breakdown -->
+        <div class="source-breakdown">
+            <h2>Source Breakdown</h2>
+            <div class="dashboard-grid">
+                <div class="stat-card"><div class="info"><h3 id="sourceSocialMedia">0</h3><p>Social Media</p></div></div>
+                <div class="stat-card"><div class="info"><h3 id="sourceFriend">0</h3><p>Friend or Family</p></div></div>
+                <div class="stat-card"><div class="info"><h3 id="sourceAdvertisement">0</h3><p>Advertisement</p></div></div>
+                <div class="stat-card"><div class="info"><h3 id="sourceSchoolVisit">0</h3><p>School Visit</p></div></div>
+                <div class="stat-card"><div class="info"><h3 id="sourceOther">0</h3><p>Other</p></div></div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+             <a href="student-list.html" class="manage-btn"><i class="fas fa-list-ul"></i> Manage Registrations</a>
+             <a href="settings.html" class="manage-btn"><i class="fas fa-cog"></i> Manage App Settings</a>
+        </div>
+    </div>
+
+    <script type="module" src="java Script/admin.js"></script>
+</body>
+</html>

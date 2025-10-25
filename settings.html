@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <!-- Firebase SDK Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+    <div id="loader"><h2>Loading Settings...</h2></div>
+
+    <div class="admin-container" id="admin-content" style="display: none;">
+        <header>
+            <h1>Admin Settings</h1>
+            <div class="header-buttons">
+                 <a href="admin.html" class="back-button"><i class="fas fa-tachometer-alt"></i> Back to Dashboard</a>
+                <button id="signOutBtn"><i class="fas fa-sign-out-alt"></i> Sign Out</button>
+            </div>
+        </header>
+
+        <!-- Registration Settings -->
+        <div class="settings-panel">
+            <h2>Registration Status</h2>
+            <div class="settings-content">
+                <p>Control the ability for new users to create accounts and submit registration forms.</p>
+                <button id="registrationStatusBtn">Loading Status...</button>
+            </div>
+        </div>
+
+        <!-- Entry Test Date Settings -->
+        <div class="settings-panel">
+            <h2>Entry Test Date Settings</h2>
+            <div id="test-dates-container" class="dashboard-grid">
+                <!-- Date inputs will be dynamically generated here by settings.js -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="java Script/settings.js"></script>
+</body>
+</html>
